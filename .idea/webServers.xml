@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="528d3248-c0b3-46d8-8125-0ee61f85eb16" name="www.c5w.net" url="http://www.c5w.net">
+        <fileTransfer host="www.c5w.net" port="21" password="df9adf92df9bdf9edf9bdf98df9cdf9cdf92df9a" username="vgi@c5w.net">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
