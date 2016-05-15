@@ -1,6 +1,14 @@
 /**
  * Created by doi on 5/5/2016 AD.
  */
+
+function alertDismissed() {
+    // do something
+    $('#login').val("");
+    $('#login-psw').val("");
+    $('#login').focus();
+}
+
 $('#btn-login').on('click', function () {
 
     if ($('#login').val() == "doi-admin") {
@@ -12,15 +20,15 @@ $('#btn-login').on('click', function () {
     }
 
     if (!$('#login').val() || !$('#login-psw').val()) {
-        //$('#login-lbl').html("<p class='red' align='center'>Incorrect username and password</p>");
-        setTimeout(function () {
-            //$('#login-lbl').html("")
-        }, 5000);
+        navigator.notification.alert(
+            'Incorrect Username or Password!',  // message
+            alertDismissed,         // callback
+            'Login fail',            // title
+            'Back'                  // buttonName
+        );
     } else {
         amplitude.setUserId($('#login').val());
         hashedpassword = sha256($('#login-psw').val());
-        //console.log(hashedpassword);
-
         var formData = "username=" + $('#login').val() + "&hashedpassword=" + hashedpassword;
         console.log(formData);
 
@@ -33,11 +41,13 @@ $('#btn-login').on('click', function () {
                 console.log(JSON.stringify(data.data));
                 //data - response from server
                 if (data.data.length == 0) {
-                    //$('#login-lbl').html("<p class='red' align='center'>Incorrect username and password</p>");
+                    navigator.notification.alert(
+                        'Incorrect Username or Password!',  // message
+                        alertDismissed,         // callback
+                        'Login fail',            // title
+                        'Back'                  // buttonName
+                    );
                     amplitude.logEvent('Login Fail');
-                    setTimeout(function () {
-                        //$('#login-lbl').html("")
-                    }, 5000);
                 } else {
                     if (data.data[0].username == $('#login').val()) {
                         window.sessionStorage.setItem('cid', data.data[0].cid);
@@ -52,11 +62,13 @@ $('#btn-login').on('click', function () {
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR);
-                //$('#login-lbl').html("<p class='red' align='center'>" + textStatus + "</p>");
+                navigator.notification.alert(
+                    'Login Error!',  // message
+                    alertDismissed,         // callback
+                    'Error',            // title
+                    'Back'                  // buttonName
+                );
                 amplitude.logEvent('Login Error');
-                setTimeout(function () {
-                    //$('#login-lbl').html("")
-                }, 5000);
             }
         });
     }
