@@ -95,6 +95,10 @@
                         {
                             "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"OneSignalPush\"><param name=\"ios-package\" value=\"OneSignalPush\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -105,6 +109,12 @@
                         {
                             "xml": "<string />",
                             "count": 2
+                        }
+                    ],
+                    "UIBackgroundModes": [
+                        {
+                            "xml": "<array><string>remote-notification</string></array>",
+                            "count": 1
                         }
                     ]
                 }
@@ -173,6 +183,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "onesignal-cordova-plugin": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
@@ -736,6 +749,14 @@
             "merges": [
                 "navigator.notification",
                 "navigator"
+            ]
+        },
+        {
+            "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+            "id": "onesignal-cordova-plugin.OneSignal",
+            "pluginId": "onesignal-cordova-plugin",
+            "clobbers": [
+                "OneSignal"
             ]
         }
     ]
