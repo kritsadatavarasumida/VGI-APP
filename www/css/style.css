@@ -353,6 +353,12 @@ h1.title.big {
   margin-top: 56px;
   overflow: auto;
 }
+.page-all {
+  margin-top: 10px;
+  overflow: auto;
+  font-size:18px;
+  color:#FFFFFF;
+}
 .page.fullscreen {
   height: calc(100vh - 56px);
 }
