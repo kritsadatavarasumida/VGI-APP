@@ -1577,6 +1577,11 @@ ul.faq {
 }
 
 /* Product */
+.product.rowp {
+  width: 100%;
+  padding: 4px;
+  float: left;
+}
 .product.three {
   width: 33%;
   padding: 4px;
