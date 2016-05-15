@@ -1,5 +1,5 @@
 /**
- * Created by doi on 5/14/2016 AD.
+ * Created by doi on 5/15/2016 AD.
  */
 function onDeviceReady() {
     StatusBar.hide();
