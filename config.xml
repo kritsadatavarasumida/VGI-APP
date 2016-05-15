@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0"
         xmlns="http://www.w3.org/ns/widgets">
-    <name>Hello World</name>
+    <name>VGI Media Monitoring</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        VGI Media Monitoring Application used to monitor all media that VGI Global Media provided for the customer
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="support@vgi.co.th" href="http://www.vgi.co.th">
+        VGI Global Media Team
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
