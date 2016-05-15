@@ -2,6 +2,8 @@
  * Created by doi on 5/15/2016 AD.
  */
 
+
+
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -13,112 +15,268 @@ function getUrlVars() {
     return vars;
 }
 
-if (page_name == 'home') {
-    var formData = "";
-    $.ajax({
-        url: serverURL + "news-home.php",
-        type: "POST",
-        data: formData,
-        success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            //data - response from server
+$(window).bind("load", function () {
+    if (page_name == 'home') {
+        var formData = "";
+        $.ajax({
+            url: serverURL + "news-home.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                //data - response from server
 
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
 
-        }
-    });
-}
-
-if (page_name == 'product') {
-    amplitude.logEvent('Enter Live Catalog');
-    var page_live_catalog = 1;
-    var formData = "pid=" + page_live_catalog;
-    $.ajax({
-        url: serverURL + "get-icons-by-pid.php",
-        type: "POST",
-        data: formData,
-        success: function (data, textStatus, jqXHR) {
-            //console.log(data);
-            //console.log(data.data.length);
-            var html = "";
-            for (var i = 0; i < data.data.length; i++) {
-                html = "";
-                html = '<div class="product half">';
-                html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
-                html += '</div>';
-                $('#product3').append(html);
             }
-            //data - response from server
+        });
+
+        $('#btn-live').on('click', function () {
+
+            window.location = "product.html";
+            console.log(1);
+        });
+    }
+
+    if (page_name == 'product') {
+
+        amplitude.logEvent('Enter Live Catalog');
+        var page_live_catalog = 1;
+        var formData = "pid=" + page_live_catalog;
+        $.ajax({
+            url: serverURL + "get-icons-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="product half">';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#product3').append(html);
+                }
+                //data - response from server
 
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
 
-        }
-    });
-}
-
-if (page_name == 'list') {
-    var param1 = getUrlVars()["pid"];
-    var formData = "pid=" + param1;
-    $.ajax({
-        url: serverURL + "get-icons-by-pid.php",
-        type: "POST",
-        data: formData,
-        success: function (data, textStatus, jqXHR) {
-            //console.log(data);
-            //console.log(data.data.length);
-            var html = "";
-            for (var i = 0; i < data.data.length; i++) {
-                html = "";
-                html = '<div class="product half">';
-                html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
-                html += '</div>';
-                $('#product3').append(html);
             }
-            //data - response from server
+        });
+        $('#btn-product-back').on('click', function () {
+            window.history.go(-1);
+            return false;
+        });
+    }
+
+    if (page_name == 'list') {
+
+        $('#btn-list-back').on('click', function () {
+            window.history.go(-1);
+            return false;
+        });
+
+        var param1 = getUrlVars()["pid"];
+        var formData = "pid=" + param1;
+        $.ajax({
+            url: serverURL + "get-icons-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="product half">';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#product3').append(html);
+                }
+                //data - response from server
 
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
 
-        }
-    });
-
-    $.ajax({
-        url: serverURL + "get-banners-by-pid.php",
-        type: "POST",
-        data: formData,
-        success: function (data, textStatus, jqXHR) {
-            //console.log(data);
-            //console.log(data.data.length);
-            var html = "";
-            for (var i = 0; i < data.data.length; i++) {
-                html = "";
-                html = '<div class="swiper-slide">';
-                html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
-                html += '</div>';
-                $('#banners').append(html);
             }
-            //data - response from server
+        });
+
+        $.ajax({
+            url: serverURL + "get-banners-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="swiper-slide">';
+                    html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#banners').append(html);
+                }
+                //data - response from server
 
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
 
+            }
+        });
+
+
+    }
+
+    if (page_name == "vdo") {
+
+        $('#btn-vdo-back').on('click', function () {
+            window.history.go(-1);
+            return false;
+        });
+
+        $('#test-btn').on('click', function () {
+            var myVideo = document.getElementById('my-video');
+
+            if (typeof(myVideo.webkitEnterFullscreen) != "undefined") {
+                // This is for Android Stock.
+                myVideo.webkitEnterFullscreen();
+            } else if (typeof(myVideo.webkitRequestFullscreen) != "undefined") {
+                // This is for Chrome.
+                myVideo.webkitRequestFullscreen();
+            } else if (typeof(myVideo.mozRequestFullScreen) != "undefined") {
+                myVideo.mozRequestFullScreen();
         }
-    });
+        })
+    }
 
-}
+    if (page_name == "listbox") {
 
-if (page_name == "vdo") {
-    $('#btn-back').on('click', function () {
-        window.history.go(-1);
-    });
-}
+        $('#btn-box-back').on('click', function () {
+            window.history.go(-1);
+            return false;
+        });
+
+        var param1 = getUrlVars()["pid"];
+        var formData = "pid=" + param1;
+        $.ajax({
+            url: serverURL + "get-icons-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="product three">';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#product3').append(html);
+                }
+                //data - response from server
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+
+            }
+        });
+
+        $.ajax({
+            url: serverURL + "get-banners-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="swiper-slide">';
+                    html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#banners').append(html);
+                }
+                //data - response from server
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+
+            }
+        });
+    }
+
+    if (page_name == "listrow") {
+
+        $('#btn-row-back').on('click', function () {
+            window.history.go(-1);
+            return false;
+        });
+
+        var param1 = getUrlVars()["pid"];
+        var formData = "pid=" + param1;
+        $.ajax({
+            url: serverURL + "get-icons-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="product rowp">';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" height="100px"  alt=""></a>';
+                    html += '</div>';
+                    $('#product3').append(html);
+                }
+                //data - response from server
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+
+            }
+        });
+
+        $.ajax({
+            url: serverURL + "get-banners-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="swiper-slide">';
+                    html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#banners').append(html);
+                }
+                //data - response from server
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+
+            }
+        });
+    }
+});

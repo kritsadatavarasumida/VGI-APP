@@ -175,13 +175,19 @@ h1.title.big {
   margin: 0 !important;
 }
 .m-20 {
-  margin: 20px !important;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  
 }
 .p-0 {
   padding: 0 !important;
 }
 .p-20 {
   padding: 20px !important;
+}
+.w-80 {
+  width: 80%;
+  padding:10px;
 }
 .w-100 {
   width: 100%;
@@ -348,6 +354,15 @@ h1.title.big {
 }
 .page {
   margin-top: 56px;
+  overflow: auto;
+}
+.page-all {
+  margin-top: 10px;
+  overflow: auto;
+  color:#FFFFFF;
+}
+.page-login {
+  margin-top: 30px;
   overflow: auto;
 }
 .page.fullscreen {
@@ -1562,6 +1577,16 @@ ul.faq {
 }
 
 /* Product */
+.product.rowp {
+  width: 100%;
+  padding: 4px;
+  float: left;
+}
+.product.three {
+  width: 33%;
+  padding: 4px;
+  float: left;
+}
 .product.half {
   /*width: 50%;*/
   width: 50%;

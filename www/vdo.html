@@ -126,7 +126,7 @@
 
       <!-- Toolbar -->
       <div id="toolbar" class="primary-color">
-          <div class="open-left"><a href="#" id="btn-back"><i class="ion-reply"></i></a></div>
+          <div class="open-left"><a href="#" id="btn-vdo-back"><i class="ion-reply"></i></a></div>
         <div class="open-right" id="open-right" data-activates="slide-out">
           <i class="ion-android-menu"></i>
         </div>        
@@ -153,9 +153,10 @@
 
         <div align="center" style="width:93%; margin-left:auto; margin-right:auto;" id="product3">
         <div class="p-20 animated fadeinright delay-2">
-          <video class="responsive-video" controls>
-            <source src="http://104.199.155.2:1935/vgi/udon02.stream/playlist.m3u8">
+            <video class="responsive-video" controls id="my-video">
+                <source src="rtsp://104.199.155.2:1935/vgi/udon02.stream">
           </video>
+            <a href="#" id="test-btn">test btn</a>
         </div>
         </div>
 
@@ -167,12 +168,12 @@
     <script>
         page_name = "vdo";
     </script>
+
     <script src="cordova.js"></script>
     <script src="js/jquery-2.1.0.min.js"></script>
     <script src="js/sha256.min.js"></script>
-    <script src="js/jquery.swipebox.min.js"></script>   
-    <script src="js/jquery.smoothState.min.js"></script> 
-    <script src="js/materialize.min.js"></script> 
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/materialize.min.js"></script>
     <script src="js/swiper.min.js"></script>  
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/masonry.min.js"></script>

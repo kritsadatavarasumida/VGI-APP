@@ -16,7 +16,7 @@ $('#btn-login').on('click', function () {
         window.sessionStorage.setItem('username', "doi-admin");
         window.sessionStorage.setItem('company_name', "VGI Global Media");
         //console.log(sessionStorage['uid']);
-        window.location = "main.html";
+        window.location = "home.html";
     }
 
     if (!$('#login').val() || !$('#login-psw').val()) {
@@ -56,7 +56,7 @@ $('#btn-login').on('click', function () {
                         //console.log(sessionStorage['uid']);
 
                         amplitude.logEvent('Login Success');
-                        window.location = "main.html";
+                        window.location = "home.html";
                     }
                 }
             },

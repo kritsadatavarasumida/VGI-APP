@@ -16,6 +16,7 @@ function onDeviceReady() {
 
     // Show an alert box if a notification comes in when the user is in your app.
     window.plugins.OneSignal.enableInAppAlertNotification(true);
+    window.plugins.OneSignal.sendTag("userID", sessionStorage['username']);
 }
 
 

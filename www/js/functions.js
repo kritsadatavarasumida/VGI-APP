@@ -42,7 +42,7 @@ $(function () {
             initiate_plugins(); // All onAfter calls goes inside this function
         }
     };
-    var smoothState = $('#main').smoothState(options).data('smoothState');
+    // var smoothState = $('#main').smoothState(options).data('smoothState');
 });
 ////--> Call all function for Ajax <--////
 function initiate_plugins() {
@@ -286,24 +286,7 @@ function initiate_plugins() {
                 data: [28, 48, 19, 27, 90]
             }]
     }
-    var ctx = document.getElementById("canvas").getContext("2d");
-    window.myLine = new Chart(ctx).Line(lineChartData, {
-        responsive: true,
-    });
-    var ctx2 = document.getElementById("pieChart").getContext("2d");
-    window.myPie = new Chart(ctx2).Pie(pieData, {
-        animation: true,
-        responsive: true
-    });
-    var ctx3 = document.getElementById("barChart").getContext("2d");
-    window.myBar = new Chart(ctx3).Bar(barChartData, {
-        responsive: true
-    });
-    var ctx4 = document.getElementById("doughnutChart").getContext("2d");
-    window.myPie = new Chart(ctx4).Doughnut(doughnutData, {
-        animation: true,
-        responsive: true
-    });
+
 
 }
 ////--> End of Call all function for Ajax, now from there recall all the functions <--////
