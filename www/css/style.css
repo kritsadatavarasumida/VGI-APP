@@ -175,7 +175,9 @@ h1.title.big {
   margin: 0 !important;
 }
 .m-20 {
-  margin: 20px !important;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  
 }
 .p-0 {
   padding: 0 !important;
@@ -185,6 +187,7 @@ h1.title.big {
 }
 .w-80 {
   width: 80%;
+  padding:10px;
 }
 .w-100 {
   width: 100%;
@@ -356,8 +359,11 @@ h1.title.big {
 .page-all {
   margin-top: 10px;
   overflow: auto;
-  font-size:18px;
   color:#FFFFFF;
+}
+.page-login {
+  margin-top: 30px;
+  overflow: auto;
 }
 .page.fullscreen {
   height: calc(100vh - 56px);
