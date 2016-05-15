@@ -17,7 +17,7 @@ $('#btn-login').on('click', function () {
             //$('#login-lbl').html("")
         }, 5000);
     } else {
-
+        amplitude.setUserId($('#login').val());
         hashedpassword = sha256($('#login-psw').val());
         //console.log(hashedpassword);
 
@@ -34,6 +34,7 @@ $('#btn-login').on('click', function () {
                 //data - response from server
                 if (data.data.length == 0) {
                     //$('#login-lbl').html("<p class='red' align='center'>Incorrect username and password</p>");
+                    amplitude.logEvent('Login Fail');
                     setTimeout(function () {
                         //$('#login-lbl').html("")
                     }, 5000);
@@ -43,6 +44,8 @@ $('#btn-login').on('click', function () {
                         window.sessionStorage.setItem('username', data.data[0].username);
                         window.sessionStorage.setItem('company_name', data.data[0].company_name);
                         //console.log(sessionStorage['uid']);
+
+                        amplitude.logEvent('Login Success');
                         window.location = "main.html";
                     }
                 }
@@ -50,6 +53,7 @@ $('#btn-login').on('click', function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR);
                 //$('#login-lbl').html("<p class='red' align='center'>" + textStatus + "</p>");
+                amplitude.logEvent('Login Error');
                 setTimeout(function () {
                     //$('#login-lbl').html("")
                 }, 5000);

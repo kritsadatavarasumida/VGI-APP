@@ -20,7 +20,22 @@
     <link href="css/swipebox.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 
-    </script>
+      <script type="text/javascript">
+          (function(e,t){var n=e.amplitude||{_q:[]};var r=t.createElement("script");r.type="text/javascript";
+              r.async=true;r.src="https://d24n15hnbwhuhn.cloudfront.net/libs/amplitude-2.12.1-min.gz.js";
+              r.onload=function(){e.amplitude.runQueuedFunctions()};var s=t.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(r,s);function i(e,t){e.prototype[t]=function(){this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));
+                  return this}}var o=function(){this._q=[];return this};var a=["add","append","clearAll","prepend","set","setOnce","unset"];
+              for(var u=0;u<a.length;u++){i(o,a[u])}n.Identify=o;var c=function(){this._q=[];return this;
+              };var p=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];
+              for(var l=0;l<p.length;l++){i(c,p[l])}n.Revenue=c;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId"];
+              function v(e){function t(t){e[t]=function(){e._q.push([t].concat(Array.prototype.slice.call(arguments,0)));
+              }}for(var n=0;n<d.length;n++){t(d[n])}}v(n);e.amplitude=n})(window,document);
+
+          amplitude.init("fff0f74b4642f3ea4b79cff650b55c4e");
+          amplitude.logEvent('Open Application');
+      </script>
+
 </head>
 
   <body>
@@ -83,7 +98,9 @@
 
           <div class="p-20">
             <div class="input-field center">
-              <input id="login" type="text">
+        < input
+id = "login"
+type = "text" >
               <label for="login">Username</label>
             </div>
 
@@ -93,7 +110,10 @@
             </div>
           </div>
 
-          <a class="waves-effect waves-light btn-large primary-color block m-20 animated bouncein delay-4" href="#" id="btn-login">Login</a>
+        < a class
+= "waves-effect waves-light btn-large primary-color block m-20 animated bouncein delay-4"
+href = "#"
+id = "btn-login" > Login < / a >
         </div>
 
       </div> 
