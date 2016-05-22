@@ -4,7 +4,13 @@
 
 $('#username').html(sessionStorage['username']);
 $('#company_name').html(sessionStorage['company_name']);
-$('#avatar').html(sessionStorage['company_logo']);
+console.log('1' + sessionStorage['company_logo'])
+if (sessionStorage['company_logo'] == null || sessionStorage['company_logo'] == '') {
+    $('#avatar').attr('src', 'img/user.jpg');
+} else {
+    $('#avatar').attr('src', sessionStorage['company_logo']);
+}
+
 
 $('#btn-live').on('click', function () {
 
