@@ -155,24 +155,67 @@ $(window).bind("load", function () {
 
     if (page_name == "vdo") {
 
+        var param1 = getUrlVars()["pid"];
+        amplitude.logEvent('Page ID:' + param1);
+        var formData = "pid=" + param1;
         $('#btn-vdo-back').on('click', function () {
             window.history.go(-1);
             return false;
         });
 
-        $('#test-btn').on('click', function () {
-            var myVideo = document.getElementById('my-video');
+        $.ajax({
+            url: serverURL + "get-banners-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                $('#loading').hide();
+                //console.log(data);
+                //console.log(data.data.length);
+                var html = "";
+                for (var i = 0; i < data.data.length; i++) {
+                    html = "";
+                    html = '<div class="swiper-slide">';
+                    html += '<img src="http://104.199.155.2/streammgmt/images/banner/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '</div>';
+                    $('#banners').append(html);
 
-            if (typeof(myVideo.webkitEnterFullscreen) != "undefined") {
-                // This is for Android Stock.
-                myVideo.webkitEnterFullscreen();
-            } else if (typeof(myVideo.webkitRequestFullscreen) != "undefined") {
-                // This is for Chrome.
-                myVideo.webkitRequestFullscreen();
-            } else if (typeof(myVideo.mozRequestFullScreen) != "undefined") {
-                myVideo.mozRequestFullScreen();
-        }
-        })
+                }
+                //data - response from server
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+
+            }
+        });
+
+        $.ajax({
+            url: serverURL + "get-streams-by-pid.php",
+            type: "POST",
+            data: formData,
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                if (data.data.length == 1) {
+                    if (sessionStorage['OS'] != "Android") {
+                        html = '<video class="responsive-video" controls autoplay id="my-video" width="100%">';
+                        html += '<source type="application/x-mpegurl" src="' + decodeURIComponent(data.data[0].url) + '">';
+                        html += '</video>';
+
+
+                    } else {
+                        html = '<video data-dashjs-player class="responsive-video" controls autoplay id="my-video" src="' + decodeURIComponent(data.data[0].aurl) + '" width="100%"></video>';
+                    }
+                    $('#vdo-container').html(html);
+                    $('#linestatus').html(decodeURIComponent(data.data[0].show_text).replace(/\+/g, ' '));
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+
+            }
+        });
     }
 
     if (page_name == "listbox") {
