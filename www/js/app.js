@@ -2,6 +2,11 @@
  * Created by doi on 5/15/2016 AD.
  */
 
+window.onerror = function (message, file, line) {
+    window.external.Notify("Error in Application: " +
+        message + ". Source File: " + file + ", Line: " + line);
+}
+
 $('#username').html(sessionStorage['username']);
 $('#company_name').html(sessionStorage['company_name']);
 console.log('1' + sessionStorage['company_logo'])
@@ -204,13 +209,13 @@ $(window).bind("load", function () {
                 console.log(data);
                 if (data.data.length == 1) {
                     if (sessionStorage['OS'] != "Android") {
-                        html = '<video class="responsive-video" controls autoplay id="my-video" width="100%">';
+                        html = '<video class="responsive-video" controls autoplay id="my-video" width="100%" poster="img/loader2.gif">';
                         html += '<source type="application/x-mpegurl" src="' + decodeURIComponent(data.data[0].url) + '">';
                         html += '</video>';
 
 
                     } else {
-                        html = '<video data-dashjs-player class="responsive-video" controls autoplay id="my-video" src="' + decodeURIComponent(data.data[0].aurl) + '" width="100%"></video>';
+                        html = '<video data-dashjs-player class="responsive-video" controls autoplay id="my-video" poster="img/loader2.gif" src="' + decodeURIComponent(data.data[0].aurl) + '" width="100%"></video>';
                     }
                     $('#vdo-container').html(html);
                     $('#linestatus').html(decodeURIComponent(data.data[0].show_text).replace(/\+/g, ' '));
