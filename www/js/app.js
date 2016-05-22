@@ -27,13 +27,16 @@ $(window).bind("load", function () {
     if (page_name == 'home') {
         var formData = "";
         $.ajax({
-            url: serverURL + "news-home.php",
+            url: serverURL + "list-news.php",
             type: "POST",
             data: formData,
             success: function (data, textStatus, jqXHR) {
                 console.log(data);
                 //data - response from server
-
+                for (var i = 0; i < data.data.length; i++) {
+                    html = decodeURIComponent(data.data[i].createdon).replace(/\+/g, ' ') + ": " + decodeURIComponent(data.data[i].content).replace(/\+/g, ' ') + "<br>";
+                    $('#annoucement').append(html);
+                }
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -279,7 +282,7 @@ $(window).bind("load", function () {
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="swiper-slide">';
-                    html += '<img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<img src="http://104.199.155.2/streammgmt/images/banner/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#banners').append(html);
                 }
