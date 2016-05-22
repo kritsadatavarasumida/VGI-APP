@@ -2,7 +2,15 @@
  * Created by doi on 5/15/2016 AD.
  */
 
+$('#username').html(sessionStorage['username']);
+$('#company_name').html(sessionStorage['company_name']);
+$('#avatar').html(sessionStorage['company_logo']);
 
+$('#btn-live').on('click', function () {
+
+    window.location = "product.html";
+    //console.log(1);
+});
 
 function getUrlVars() {
     var vars = [], hash;
@@ -37,7 +45,7 @@ $(window).bind("load", function () {
         $('#btn-live').on('click', function () {
 
             window.location = "product.html";
-            console.log(1);
+            //console.log(1);
         });
     }
 
@@ -51,13 +59,14 @@ $(window).bind("load", function () {
             type: "POST",
             data: formData,
             success: function (data, textStatus, jqXHR) {
+                $('#product3').html("");
                 //console.log(data);
                 //console.log(data.data.length);
                 var html = "";
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="product half">';
-                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].icon_url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#product3').append(html);
                 }
@@ -84,19 +93,22 @@ $(window).bind("load", function () {
         });
 
         var param1 = getUrlVars()["pid"];
+        amplitude.logEvent('Page ID:' + param1);
         var formData = "pid=" + param1;
+
         $.ajax({
             url: serverURL + "get-icons-by-pid.php",
             type: "POST",
             data: formData,
             success: function (data, textStatus, jqXHR) {
+                $('#product3').html("");
                 //console.log(data);
                 //console.log(data.data.length);
                 var html = "";
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="product half">';
-                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].icon_url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#product3').append(html);
                 }
@@ -115,13 +127,13 @@ $(window).bind("load", function () {
             type: "POST",
             data: formData,
             success: function (data, textStatus, jqXHR) {
-                //console.log(data);
+                console.log(data);
                 //console.log(data.data.length);
                 var html = "";
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="swiper-slide">';
-                    html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<img src="http://104.199.155.2/streammgmt/images/banner/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#banners').append(html);
                 }
@@ -180,7 +192,7 @@ $(window).bind("load", function () {
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="product three">';
-                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#product3').append(html);
                 }
@@ -205,7 +217,7 @@ $(window).bind("load", function () {
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="swiper-slide">';
-                    html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#banners').append(html);
                 }
@@ -228,19 +240,21 @@ $(window).bind("load", function () {
         });
 
         var param1 = getUrlVars()["pid"];
+        amplitude.logEvent('Page ID:' + param1);
         var formData = "pid=" + param1;
         $.ajax({
             url: serverURL + "get-icons-by-pid.php",
             type: "POST",
             data: formData,
             success: function (data, textStatus, jqXHR) {
+                $('#product3').html("");
                 //console.log(data);
                 //console.log(data.data.length);
                 var html = "";
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="product rowp">';
-                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" height="100px"  alt=""></a>';
+                    html += '<a href="' + data.data[i].linkto + '.html?pid=' + data.data[i].next_page + '"><img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].icon_url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" height="100px"  alt=""></a>';
                     html += '</div>';
                     $('#product3').append(html);
                 }
@@ -259,13 +273,13 @@ $(window).bind("load", function () {
             type: "POST",
             data: formData,
             success: function (data, textStatus, jqXHR) {
-                //console.log(data);
-                //console.log(data.data.length);
+                console.log(data);
+                console.log(data.data.length);
                 var html = "";
                 for (var i = 0; i < data.data.length; i++) {
                     html = "";
                     html = '<div class="swiper-slide">';
-                    html += '<img src="' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                    html += '<img src="http://104.199.155.2/streammgmt/images/icon/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
                     html += '</div>';
                     $('#banners').append(html);
                 }

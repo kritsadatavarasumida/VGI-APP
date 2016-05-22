@@ -53,6 +53,7 @@ $('#btn-login').on('click', function () {
                         window.sessionStorage.setItem('cid', data.data[0].cid);
                         window.sessionStorage.setItem('username', data.data[0].username);
                         window.sessionStorage.setItem('company_name', data.data[0].company_name);
+                        window.sessionStorage.setItem('company_logo', data.data[0].company_logo);
                         //console.log(sessionStorage['uid']);
 
                         amplitude.logEvent('Login Success');
