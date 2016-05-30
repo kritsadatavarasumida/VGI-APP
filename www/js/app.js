@@ -208,15 +208,15 @@ $(window).bind("load", function () {
             success: function (data, textStatus, jqXHR) {
                 console.log(data);
                 if (data.data.length == 1) {
-                    if (sessionStorage['OS'] != "Android") {
-                        html = '<video class="responsive-video" controls autoplay id="my-video" width="100%" poster="img/loader2.gif">';
+                    //if (sessionStorage['OS'] != "Android") {
+                    html = '<video class="vjs-default-skin" preload="auto" controls autoplay id="my-video"width="100%" height="auto" poster="img/loader3.gif" data-setup={"aspectRatio": "16:9"}>';
                         html += '<source type="application/x-mpegurl" src="' + decodeURIComponent(data.data[0].url) + '">';
                         html += '</video>';
 
 
-                    } else {
-                        html = '<video data-dashjs-player class="responsive-video" controls autoplay id="my-video" poster="img/loader2.gif" src="' + decodeURIComponent(data.data[0].aurl) + '" width="100%"></video>';
-                    }
+                    //} else {
+                    //    html = '<video class="video-js" controls autoplay id="my-video" poster="img/loader3.gif" src="' + decodeURIComponent(data.data[0].url) + '" width="100%"></video>';
+                    //}
                     $('#vdo-container').html(html);
                     $('#linestatus').html(decodeURIComponent(data.data[0].show_text).replace(/\+/g, ' '));
                 }
