@@ -351,3 +351,83 @@ $(window).bind("load", function () {
         });
     }
 });
+
+if (page_name == "mvdo") {
+
+    var param1 = getUrlVars()["pid"];
+    amplitude.logEvent('Page ID:' + param1);
+    var formData = "pid=" + param1;
+    $('#btn-vdo-back').on('click', function () {
+        window.history.go(-1);
+        return false;
+    });
+
+    $.ajax({
+        url: serverURL + "get-banners-by-pid.php",
+        type: "POST",
+        data: formData,
+        success: function (data, textStatus, jqXHR) {
+            $('#loading').hide();
+            //console.log(data);
+            //console.log(data.data.length);
+            var html = "";
+            for (var i = 0; i < data.data.length; i++) {
+                html = "";
+                html = '<div class="swiper-slide">';
+                html += '<img src="http://104.199.155.2/streammgmt/images/banner/' + data.data[i].url.replace(/%3A/g, ':').replace(/%2F/g, '/') + '" alt=""></a>';
+                html += '</div>';
+                $('#banners').append(html);
+
+            }
+            //data - response from server
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+
+        }
+    });
+    var vpara = '{"aspectRatio": "16:9"}';
+    console.log(vpara);
+    $.ajax({
+        url: serverURL + "get-streams-by-pid.php",
+        type: "POST",
+        data: formData,
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            //if (sessionStorage['OS'] != "Android") {
+            if (data.data.length > 0) {
+                html = '<video class="vjs-default-skin" preload="auto" controls autoplay id="my-video"width="100%" height="auto" poster="img/loader3.gif" >';
+                html += '<source type="application/x-mpegurl" src="' + decodeURIComponent(data.data[0].url) + '">';
+                html += '</video>';
+
+
+                //} else {
+                //    html = '<video class="video-js" controls autoplay id="my-video" poster="img/loader3.gif" src="' + decodeURIComponent(data.data[0].url) + '" width="100%"></video>';
+                //}
+                $('#vdo-container').html(html);
+                $('#linestatus').html(decodeURIComponent(data.data[0].show_text).replace(/\+/g, ' '));
+
+                for (var i = 1; i <= data.data.length; i++) {
+                    bhtml = '<a href=# id=camera' + i + ' class=mybtn>' + i + '</a>&nbsp;';
+                    $('#btn-container').append(bhtml);
+                    $('#camera' + i).on('click', function (url, show_text) {
+                        return function () {
+                            html = '<video class="vjs-default-skin" preload="auto" controls autoplay id="my-video"width="100%" height="auto" poster="img/loader3.gif" >';
+                            html += '<source type="application/x-mpegurl" src="' + decodeURIComponent(url) + '">';
+                            html += '</video>';
+                            $('#vdo-container').html(html);
+                            $('#linestatus').html(decodeURIComponent(show_text).replace(/\+/g, ' '));
+                        }
+                    }(data.data[i - 1].url, data.data[i - 1].show_text));
+                }
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+
+        }
+    });
+}
