@@ -410,7 +410,7 @@ if (page_name == "mvdo") {
                 $('#linestatus').html(decodeURIComponent(data.data[0].show_text).replace(/\+/g, ' '));
 
                 for (var i = 1; i <= data.data.length; i++) {
-                    bhtml = '<a href=# id=camera' + i + ' class=mybtn>' + i + '</a>&nbsp;';
+                    bhtml = "<a href=# id=camera" + i + " class=mybtn>" + decodeURIComponent(data.data[i - 1].show_text).replace(/\+/g, ' ') + "</a>";
                     $('#btn-container').append(bhtml);
                     $('#camera' + i).on('click', function (url, show_text) {
                         return function () {
