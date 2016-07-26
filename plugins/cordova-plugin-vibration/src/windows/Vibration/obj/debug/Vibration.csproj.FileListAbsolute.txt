@@ -1,0 +1,1 @@
+Z:\USB3\workspace\VGI-APP\plugins\cordova-plugin-vibration\src\windows\Vibration\obj\debug\Vibration.csprojResolveAssemblyReference.cache
