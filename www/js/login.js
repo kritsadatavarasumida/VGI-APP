@@ -54,6 +54,7 @@ $('#btn-login').on('click', function () {
                         window.sessionStorage.setItem('username', data.data[0].username);
                         window.sessionStorage.setItem('company_name', data.data[0].company_name);
                         window.sessionStorage.setItem('company_logo', data.data[0].company_logo);
+                        window.localStorage.setItem('username', data.data[0].username);
                         //console.log(sessionStorage['uid']);
 
                         amplitude.logEvent('Login Success');
@@ -74,3 +75,5 @@ $('#btn-login').on('click', function () {
         });
     }
 });
+
+$('#login').val(localStorage['username']);

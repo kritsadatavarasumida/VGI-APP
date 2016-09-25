@@ -15,7 +15,40 @@ Primary use: App & Mobile Website
 7. Sidebars
 8. Elements
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
+/*
+video {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    object-fit: cover;
+}
+video:-webkit-full-screen {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg); !important;
+    object-fit: cover;
+}
+video:-moz-full-screen {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg); !important;
+    object-fit: cover;
+}
+video:-ms-fullscreen {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg); !important;
+    object-fit: cover;
+}
+*/
 /* 0. Reset
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* NOTE
