@@ -683,3 +683,9 @@ if (page_name == "mvdo") {
         }
     });
 }
+
+if (page_name == "contact") {
+    $('#backhome').on('click', function () {
+        window.location = "product.html";
+    });
+}
