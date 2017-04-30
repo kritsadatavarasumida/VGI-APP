@@ -8,72 +8,72 @@
     },
     "installed_plugins": {
         "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
-        "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-device-orientation": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
+      "cordova-plugin-media-capture": {
+        "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
+      },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "onesignal-cordova-plugin": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+          "PACKAGE_NAME": "com.mediamonitoring.vgiapp"
         }
     }
 }
