@@ -689,3 +689,36 @@ if (page_name == "contact") {
         window.location = "product.html";
     });
 }
+
+// page view recording
+var pageid = getUrlVars()["pid"];
+var pagevData = "uid=" + sessionStorage['cid'] + "&pid=" + pageid;
+$.ajax({
+    url: serverURL + "update_page_view.php",
+    type: "POST",
+    data: pagevData,
+    tryCount: 0,
+    retryLimit: 3,
+    success: function (data, textStatus, jqXHR) {
+        console.log(data);
+
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+        if (textStatus == 'timeout') {
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+                //try again
+                $.ajax(this);
+                return;
+            }
+            return;
+        }
+        if (xhr.status == 500) {
+            //handle error
+        } else {
+            //handle error
+        }
+    }
+});
